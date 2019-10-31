@@ -1,14 +1,14 @@
 # Inteligencia de negocios
 Repositorio Inteligencia de negocios
 
-## Descripcion Proyectos
+## Descripción Proyectos
 - Proyect 1
 - Proyect 2
 
 ## Ayudas
-### Configuracion
+### Configuración
 
-- Desactivar verificacion SSL
+- Deshabilitar verificación SSL
 > git config --global http.sslVerify false
 - Configurar usuario
 > git config --global user.email "contacto@contacto.co" 
