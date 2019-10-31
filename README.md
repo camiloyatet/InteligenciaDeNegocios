@@ -1,5 +1,5 @@
 # Inteligencia de negocios
-Repositorio Inteligencia de negocios
+Repositorio Inteligencia de negocios.
 
 ## Descripción Proyectos
 - Project 1
