@@ -15,23 +15,3 @@ Repositorio Inteligencia de negocios
 >
 > git config --global user.name "Usuario Name"
 
-### Navegar
-- Listar directorios
-> ls
-- Ruta del directorio activo
-> pwd
-- Ingresar a un directorio
-> cd DirectoryName
-- Regresar al directorio anterior
-> cd ..
-- Branch actual
-> git branch
-- Crear branch
-> git branch namebranch
-- Cambiar de branch
-> git checkout namebranch
-- Salir modo de commit
-> wq
-
-### Comandos basicos
-
