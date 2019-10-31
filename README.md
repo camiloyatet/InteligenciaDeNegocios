@@ -1,4 +1,4 @@
-# InteligenciaDeNegocios
+# Inteligencia de negocios
 Repositorio Inteligencia de negocios
 
 ## Descripcion Proyectos:
