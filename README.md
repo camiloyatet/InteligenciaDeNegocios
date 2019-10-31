@@ -1,11 +1,11 @@
 # Inteligencia de negocios
 Repositorio Inteligencia de negocios
 
-## Descripcion Proyectos:
+## Descripcion Proyectos
 - Proyect 1
 - Proyect 2
 
-## Ayudas:
+## Ayudas
 ### Configuracion
 
 - Desactivar verificacion SSL
