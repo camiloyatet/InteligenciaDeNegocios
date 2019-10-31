@@ -2,8 +2,8 @@
 Repositorio Inteligencia de negocios
 
 ## Descripción Proyectos
-- Proyect 1
-- Proyect 2
+- Project 1
+- Project 2
 
 ## Ayudas
 ### Configuración
