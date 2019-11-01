@@ -2,7 +2,7 @@
 Repositorio Inteligencia de negocios.
 
 * * *
-*   [Descripción Proyectos](#Descripción Proyectos)
+*   [Descripción Proyectos](#Descripción)
     *   [Filosofía](#filosofía)
     *   [HTML en línea](#html-en-línea)
 
@@ -10,7 +10,7 @@ Repositorio Inteligencia de negocios.
     *   [Párrafos y saltos de línea](#párrafos-y-saltos-de-línea)
 
 * * *
-## Descripción Proyectos
+## Descripción ##
 - Project 1
 - Project 2
 * * *
