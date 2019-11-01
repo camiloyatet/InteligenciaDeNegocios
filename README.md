@@ -3,17 +3,14 @@ Repositorio Inteligencia de negocios.
 
 * * *
 *   [Descripción Proyectos](#Descripción)
-    *   [Filosofía](#filosofía)
-    *   [HTML en línea](#html-en-línea)
-
-*   [Elementos de Bloque](#elementos-de-bloque)
-    *   [Párrafos y saltos de línea](#párrafos-y-saltos-de-línea)
+    *   [Project 1](#filosofía)
+    *   [Project 2](#html-en-línea)
 
 * * *
 ## Descripción ##
 - Project 1
 - Project 2
-* * *
+
 ## Ayudas
 ### Configuración
 
