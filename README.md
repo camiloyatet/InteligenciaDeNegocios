@@ -1,8 +1,8 @@
 # Inteligencia de negocios
-==================
 Repositorio Inteligencia de negocios.
+
 * * *
-*   [Resumen](#resumen)
+*   [Descripción Proyectos](#Descripción Proyectos)
     *   [Filosofía](#filosofía)
     *   [HTML en línea](#html-en-línea)
 
