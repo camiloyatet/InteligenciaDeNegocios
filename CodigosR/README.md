@@ -1,3 +1,3 @@
-# R-Codes
+# Códigos R
 
-This repository contains several R routines, functionas and codes useful for daily work
+Contiene códigos y funciones de **R** útiles en el trabajo diario.
