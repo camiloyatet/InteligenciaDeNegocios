@@ -1,7 +1,7 @@
 # Une cadenas de caracteres con la opcion de eliminar del resultado los NAs
 
 Unir.Cadenas <- function(..., sep = " ", collapse = NULL, na.rm = F) {
-    if (!na.rm)
+    if (na.rm == F)
         paste(..., sep = sep, collapse = collapse)
     else
         if (na.rm == T) {
