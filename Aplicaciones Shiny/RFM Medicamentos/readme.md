@@ -1,1 +1,1 @@
-# Aplicacion de Consumo de Droguerias
+# Aplicación de Consumo de Droguerias
