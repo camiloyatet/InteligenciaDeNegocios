@@ -2,14 +2,14 @@
 #Menu consumo----
 menu_consumo<- function(ind_act, ind_anu, emp_act, emp_anu){
   box(
-  width = 12,
-  height = 75,
-  style = "text-align: center",
-  fluidPage( tabsetPanel(
-    tabPanel("Consumo individual", ind_anu),
-    tabPanel("Consumo empresarial", emp_anu)
+    width = 12,
+    height = 75,
+    style = "text-align: center",
+    fluidPage( tabsetPanel(
+      tabPanel("Consumo individual", ind_anu),
+      tabPanel("Consumo empresarial", emp_anu)
     )
-  )
+    )
   )
 }
 #Información-----
@@ -88,7 +88,26 @@ caja_filtro<-box(
   actionButton("Run", "", icon=icon("fas fa-search"), class="btn btn-default pull-right")
 )
 
+#Contenido de Help (Manual)
 
+tab_manual <- tabItem(
+  tabName = "tab_manual",
+  fluidRow(
+    column(1),
+    column(10,
+           h1("Ficha de consumo"),
+           br(),
+           h3("La presente aplicación permite consultar los consumos empresarial e individual realizados por una empresa específica, tales están segmentados por UES."),
+           div(img(src = "example1.gif", width = 1100)),
+           h3("1. Ingresar el tipo de documento de la empresa junto con su NIT, tal como lo muestra el ejemplo.Si lo requiere, puede limitar el lapso de tiempo por meses en la barra inferior."),
+           h3("2. Seleccionar el botón de búsqueda para cargar la información de la empresa ingresada."),
+           h3("3. La información se actualiza según la unidad seleccionada dentro del recuadro naranja."),
+           h3("4. Al interior del óvalo verde, podrá indicar el tipo de consumo que deseé"),
+           br()
+    ),
+    column(1)
+  )
+)
 #Credito----
 #tab_credito_individual_anual----
 tab_credito_individual<-tabItem(
@@ -97,17 +116,17 @@ tab_credito_individual<-tabItem(
   # h2("Credito individual"),
   br(),
   box(height = 340, width=12,
-    DT::dataTableOutput("individual_credito", height = 300)
+      DT::dataTableOutput("individual_credito", height = 300)
   ),
   bsModal("detalle_individual_credito", "","tabBut", size = "large",
           br(),
           box(width = 12,height = 80,
               h3(textOutput(as.character("detalle_credito_servicio"))),background = "aqua"
-              ),
+          ),
           br(),
           DT::dataTableOutput("individual_credito_descripcion", height = 450),
           br()
-          )
+  )
 )
 # tab_credito_empresarial_anual----
 tab_credito_empresarial<-tabItem(
@@ -149,7 +168,7 @@ tab_educacion_individual<-tabItem(
   ),
   bsModal("detalle_individual_educacion", "Detalle producto","tabBut", size = "large",
           box(width = 12,height = 80,
-            h3(textOutput(as.character("detalle_educacion_servicio"))),background = "aqua"),
+              h3(textOutput(as.character("detalle_educacion_servicio"))),background = "aqua"),
           br(),
           DT::dataTableOutput("individual_educacion_descripcion", height = 450),
           br()
@@ -165,7 +184,7 @@ tab_educacion_empresarial<-tabItem(
   ),
   bsModal("detalle_empresarial_educacion", "Detalle producto","tabBut", size = "large",
           box(width = 12,height = 80,
-            h3(id="test",textOutput(as.character("detalle_educacion_servicio_empresarial"))),background = "aqua"),
+              h3(id="test",textOutput(as.character("detalle_educacion_servicio_empresarial"))),background = "aqua"),
           br(),
           DT::dataTableOutput("empresarial_educacion_descripcion", height = 450),
           br()
@@ -198,11 +217,6 @@ tab_mercadeo_individual<-tabItem(
           DT::dataTableOutput("individual_mercadeo_descripcion", height = 450),
           br()
   )
-  # ,
-  # box(height = 350, width=12,
-  #     title = (textOutput(as.character("detalle_mercadeo_servicio"))),
-  #     DT::dataTableOutput("individual_mercadeo_descripcion", height = 300)
-  # )
 )
 # tab_mercadeo_empresarial_anual----
 tab_mercadeo_empresarial<-tabItem(
@@ -332,20 +346,12 @@ tab_vivienda_individual<-tabItem(
           DT::dataTableOutput("individual_vivienda_descripcion", height = 450),
           br()
   )
-  # ,
-  # box(height = 350, width=12,
-  #     title = (textOutput(as.character("detalle_vivienda_servicio"))),
-  #     DT::dataTableOutput("individual_vivienda_descripcion", height = 300)
-  # )
+  
 )
 # tab_vivienda_empresarial_anual----
 tab_vivienda_empresarial<-tabItem(
   tabName = "vivienda_individual_anual"
-  # h1("Vivienda empresarial anual"),
-  # br(),
-  # box(height = 340, width=12,
-  #     DT::dataTableOutput("empresarial_vivienda", height = 300)
-  # )
+  
 )
 # menu_consumo_vivienda----
 menu_consumo_vivienda<-menu_consumo(
@@ -358,38 +364,17 @@ tab_vivienda <- tabItem(
   menu_consumo_vivienda
 )
 
-#Contenido de Help (Manual)
 
-tab_manual <- tabItem(
-  tabName = "tab_manual",
-  fluidRow(
-    column(1),
-    column(10,
-           h1("Ficha de consumo"),
-           br(),
-           h3("La presente aplicación permite consultar los consumos empresarial e individual realizados por una empresa específica, tales están segmentados por UES."),
-           br(),
-           h3("A continuación, están definidos los pasos a seguir."),
-           div(img(src = "example1.PNG", width = 1000)),
-           h3("1. Ingresar el tipo de documento de la empresa junto con su NIT, tal como lo muestra el ejemplo.Si lo requiere, puede limitar el lapso de tiempo por meses en la barra inferior."),
-           h3("2. Seleccionar el botón de búsqueda para cargar la información de la empresa ingresada."),
-           h3("3. La información se actualiza según la unidad seleccionada dentro del recuadro naranja."),
-           h3("4. Al interior del óvalo verde, podrá indicar el tipo de consumo que deseé"),
-           br()
-    ),
-    column(1)
-  )
-)
 #Menu caja de consumo navbarPage ----
 #Une todos los item del menu----
 cuerpo_ues <- tabItems(
+  tab_manual,
   tab_credito,
   tab_educacion,
   tab_mercadeo,
   tab_recreacion,
   tab_salud,
-  tab_vivienda,
-  tab_manual
+  tab_vivienda
 )
 #Partes del DashBoard----
 #Cabecera

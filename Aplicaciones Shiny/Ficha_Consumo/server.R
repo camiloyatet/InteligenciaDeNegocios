@@ -12,7 +12,7 @@ shinyServer(function(input, output) {
     data_info<-informacion_empresa %>% 
       filter(id_empresa==input$numero_documento)
   })
-#=============CREDITO====
+  #=============CREDITO====
   #Credito individual----
   output$individual_credito <- renderDataTable(datatable(
     data = totalizar_base(data_ind(),"anno") %>% 
@@ -91,7 +91,7 @@ shinyServer(function(input, output) {
     output$detalle_credito_servicio_empresarial<- renderText(input$click_credito_empresarial[1]) 
   }
   )
-#=============EDUCACION====
+  #=============EDUCACION====
   #Educación individual====    
   output$individual_educacion <- renderDataTable(datatable(
     data = totalizar_base(data_ind(),"anno") %>% 
@@ -129,7 +129,7 @@ shinyServer(function(input, output) {
   }
   )
   #Educación empresarial----
-output$empresarial_educacion <- renderDataTable(datatable(
+  output$empresarial_educacion <- renderDataTable(datatable(
     data = totalizar_base_empresarial(data_emp(),"anno") %>% 
       filter(ues=="Educacion")%>%
       ungroup() %>% 
@@ -164,7 +164,7 @@ output$empresarial_educacion <- renderDataTable(datatable(
     output$detalle_educacion_servicio_empresarial<- renderText(input$click_educacion_empresarial[1]) 
   }
   )
-#=============MERCADEO SOCIAL====
+  #=============MERCADEO SOCIAL====
   #Mercadeo individual====    
   output$individual_mercadeo <- renderDataTable(datatable(
     data = totalizar_base(data_ind(),"anno") %>% 
@@ -237,7 +237,7 @@ output$empresarial_educacion <- renderDataTable(datatable(
     output$detalle_mercadeo_servicio_empresarial<- renderText(input$click_mercadeo_empresarial[1]) 
   }
   )
-#=============RECREACION Y TURISMO====
+  #=============RECREACION Y TURISMO====
   #Recreacion individual====    
   output$individual_recreacion <- renderDataTable(datatable(
     data = totalizar_base(data_ind(),"anno") %>% 
@@ -310,7 +310,7 @@ output$empresarial_educacion <- renderDataTable(datatable(
     output$detalle_recreacion_servicio_empresarial<- renderText(input$click_recreacion_empresarial[1]) 
   }
   )
-#=============SALUD====
+  #=============SALUD====
   #Salud individual====    
   output$individual_salud <- renderDataTable(datatable(
     data = totalizar_base(data_ind(),"anno") %>% 
@@ -383,8 +383,8 @@ output$empresarial_educacion <- renderDataTable(datatable(
     output$detalle_salud_servicio_empresarial<- renderText(input$click_salud_empresarial[1]) 
   }
   )
-#=============VIVIENDA====
-#Vivienda individual====    
+  #=============VIVIENDA====
+  #Vivienda individual====    
   output$individual_vivienda <- renderDataTable(datatable(
     data = totalizar_base(data_ind(),"anno") %>% 
       filter(ues=="Vivienda")%>%
@@ -420,7 +420,7 @@ output$empresarial_educacion <- renderDataTable(datatable(
     output$detalle_vivienda_servicio<- renderText(input$click_vivienda_individual[1]) 
   }
   )
-#=============INFORMACION EMPRESA====
+  #=============INFORMACION EMPRESA====
   #Credito----
   output$nit_empresarial_credito<-renderInfoBox({
     infoBox(
@@ -551,22 +551,22 @@ agrupar_base_empresarial<-function(base,filtro_anno){
 }
 # Cuadra la base por columnas
 moldear_base <- function(base){
-  agrupacion_2015 <- agrupar_base(base,2015)
   agrupacion_2016 <- agrupar_base(base,2016)
   agrupacion_2017 <- agrupar_base(base,2017)
   agrupacion_2018 <- agrupar_base(base,2018)
   agrupacion_2019 <- agrupar_base(base,2019)
+  agrupacion_2020 <- agrupar_base(base,2020)
   base_agrupada<-base %>% 
     ungroup() %>% 
     select(ues,servicio,-anno,-id_empresa)%>% 
     group_by(ues,servicio)%>%
     filter(row_number()==1) %>% 
-    left_join(agrupacion_2015,by = c("ues"="ues","servicio"="servicio")) %>% 
     left_join(agrupacion_2016,by = c("ues"="ues","servicio"="servicio")) %>% 
     left_join(agrupacion_2017,by = c("ues"="ues","servicio"="servicio")) %>% 
     left_join(agrupacion_2018,by = c("ues"="ues","servicio"="servicio")) %>% 
-    left_join(agrupacion_2019,by = c("ues"="ues","servicio"="servicio")) 
-  rm(agrupacion_2015)
+    left_join(agrupacion_2019,by = c("ues"="ues","servicio"="servicio")) %>%
+    left_join(agrupacion_2020,by = c("ues"="ues","servicio"="servicio")) 
+  rm(agrupacion_2020)
   rm(agrupacion_2016)
   rm(agrupacion_2017)
   rm(agrupacion_2018)
@@ -575,22 +575,22 @@ moldear_base <- function(base){
 }
 # Cuadra la base por columnas empresarial
 moldear_base_empresarial <- function(base){
-  agrupacion_2015 <- agrupar_base_empresarial(base,2015)
   agrupacion_2016 <- agrupar_base_empresarial(base,2016)
   agrupacion_2017 <- agrupar_base_empresarial(base,2017)
   agrupacion_2018 <- agrupar_base_empresarial(base,2018)
   agrupacion_2019 <- agrupar_base_empresarial(base,2019)
+  agrupacion_2020 <- agrupar_base_empresarial(base,2020)
   base_agrupada<-base %>% 
     ungroup() %>% 
     select(ues,servicio,-anno,-id_empresa)%>% 
     group_by(ues,servicio)%>%
     filter(row_number()==1) %>% 
-    left_join(agrupacion_2015,by = c("ues"="ues","servicio"="servicio")) %>% 
     left_join(agrupacion_2016,by = c("ues"="ues","servicio"="servicio")) %>% 
     left_join(agrupacion_2017,by = c("ues"="ues","servicio"="servicio")) %>% 
     left_join(agrupacion_2018,by = c("ues"="ues","servicio"="servicio")) %>% 
-    left_join(agrupacion_2019,by = c("ues"="ues","servicio"="servicio")) 
-  rm(agrupacion_2015)
+    left_join(agrupacion_2019,by = c("ues"="ues","servicio"="servicio")) %>%
+    left_join(agrupacion_2020,by = c("ues"="ues","servicio"="servicio")) 
+  rm(agrupacion_2020)
   rm(agrupacion_2016)
   rm(agrupacion_2017)
   rm(agrupacion_2018)
@@ -635,11 +635,11 @@ head_anual = htmltools::withTags(table(
   thead(
     tr(
       th(rowspan = 2,'Servicio'),
-      th(colspan = 2, '2015'),
       th(colspan = 2, '2016'),
       th(colspan = 2, '2017'),
       th(colspan = 2, '2018'),
-      th(colspan = 2, '2019')
+      th(colspan = 2, '2019'),
+      th(colspan = 2, '2020')
     ),
     tr(
       lapply(rep(c("Afiliados", "Consumo"),5 ), th)
@@ -652,11 +652,11 @@ head_anual_empresarial = htmltools::withTags(table(
   thead(
     tr(
       th(rowspan = 2,'Servicio'),
-      th(colspan = 2, '2015'),
       th(colspan = 2, '2016'),
       th(colspan = 2, '2017'),
       th(colspan = 2, '2018'),
-      th(colspan = 2, '2019')
+      th(colspan = 2, '2019'),
+      th(colspan = 2, '2020')
     ),
     tr(
       lapply(rep(c("Consumo", "transacion"),5 ), th)
@@ -725,10 +725,10 @@ evento_click_vivienda_individual = JS("table.on('click.dt', 'td', function() {
 
 
 #Vector de nombres de las columnas----
-columnas_individual_moneda<-c("consumo2015","consumo2016","consumo2017","consumo2018","consumo2019")
-columnas_individual_numero<-c("afiliados2015","afiliados2016","afiliados2017","afiliados2018","afiliados2019")
-columnas_empresarial_moneda<-c("consumo2015","consumo2016","consumo2017","consumo2018","consumo2019")
-columnas_empresarial_numero<-c("transaccion2015","transaccion2016","transaccion2017","transaccion2018","transaccion2019")
+columnas_individual_moneda<-c("consumo2016","consumo2017","consumo2018","consumo2019","consumo2020")
+columnas_individual_numero<-c("afiliados2016","afiliados2017","afiliados2018","afiliados2019","afiliados2020")
+columnas_empresarial_moneda<-c("consumo2016","consumo2017","consumo2018","consumo2019","consumo2020")
+columnas_empresarial_numero<-c("transaccion2016","transaccion2017","transaccion2018","transaccion2019","transaccion2020")
 
 columnas_detalle_individual_numero<-c("afiliados","usos","transacciones")
 columnas_detalle_individual_moneda<-c("consumo")
@@ -766,7 +766,3 @@ parametros_table_consumo_individual_detalle<-list(
     , text = "Download"
   ) )
 )
-
-consumo_empresarial <- readRDS(file = "data/consumo_empresarial.rds")
-consumo_individual<-readRDS(file = "data/consumo_individual.rds")
-informacion_empresa<-readRDS(file = "data/informacion_empresas.rds")
