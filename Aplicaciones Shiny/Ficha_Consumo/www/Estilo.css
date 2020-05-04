@@ -1,14 +1,14 @@
+.skin-blue .main-header .logo {background-color: #232C35;
+}
+
+.skin-blue .main-header .navbar {background-color: #232C35;
+}
+
 h5 {
   font-family: 'Lobster', cursive;
   color: #000000;
 }
 
 selectInput {
-  color: #000000;
-}
-
-
-#test{
-  font-family: 'Lobster', cursive;
-  color: blue;
+  color: #FFFFFF;
 }

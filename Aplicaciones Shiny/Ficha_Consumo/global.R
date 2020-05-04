@@ -4,6 +4,8 @@ library(DT)
 library(shinydashboard)
 library(shinyBS)
 library(shinythemes)
+library(shinydashboardPlus)
+library(shinyWidgets)
 
 consumo_empresarial <- readRDS(file = "data/consumo_empresarial.rds")
 consumo_individual<-readRDS(file = "data/consumo_individual.rds")

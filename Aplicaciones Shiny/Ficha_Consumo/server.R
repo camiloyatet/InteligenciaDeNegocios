@@ -3,10 +3,10 @@ tipo_documento <- c("NIT","CC","CE","CD","PAS")
 shinyServer(function(input, output) {
   #Crea las tablas por eventos reactivos====
   data_ind<-eventReactive(input$Run,{
-    data_ind <- filtrar_base(consumo_individual,input$numero_documento,month(min(input$estacionalidad)),month(max(input$estacionalidad)))
+    data_ind <- filtrar_base(consumo_individual,input$numero_documento,month(min(input$dateRange)),year(min(input$dateRange)),month(max(input$dateRange)),year(max(input$dateRange)))
   })
   data_emp<- eventReactive(input$Run,{
-    data_emp <- filtrar_base(consumo_empresarial,input$numero_documento,month(min(input$estacionalidad)),month(max(input$estacionalidad)))
+    data_emp <- filtrar_base(consumo_empresarial,input$numero_documento,month(min(input$dateRange)),year(min(input$dateRange)),month(max(input$dateRange)),year(max(input$dateRange)))
   })
   data_info<-eventReactive(input$Run,{
     data_info<-informacion_empresa %>% 
@@ -524,11 +524,12 @@ shinyServer(function(input, output) {
 ### Funciones ====
 
 #Filtra la base completa de consumo
-filtrar_base<- function(base,empresa,min,max){
+filtrar_base<- function(base,empresa,monthMin,yearMin,monthMax,yearMax){
   filtro<-base%>%
-    filter(id_empresa==empresa, between(mes,min,max))
+    filter(id_empresa==empresa, mes >= monthMin, anno >= yearMin, mes <= monthMax, anno <= yearMax )
   return(filtro)
 }
+
 # Agrupa la base para hacer el pivot.
 agrupar_base<-function(base,filtro_anno){
   respuesta <- base%>%

@@ -51,42 +51,9 @@ box_informacion_empresa_vivienda<-
     column(4,infoBoxOutput("estado_empresa_vivienda",width = 12))
   )
 #Menu caja de unidades de negocios----
-caja_menu<-box(
-  title = "Unidad de negocio",
-  width = 12,
-  height =370, 
-  hr(),
-  sidebarMenu(
-    menuItem("Credito", tabName = "credito_principal",icon = icon("far fa-credit-card")),
-    menuItem("Educacion", tabName = "educacion_principal",icon = icon("far fa-school")),
-    menuItem("Mercadeo", tabName = "mercadeo_principal", icon = icon("fas fa-poll")),
-    menuItem("Recreacion", tabName = "recreacion_principal",icon = icon("fas fa-swimmer")),
-    menuItem("Salud", tabName = "salud_principal", icon = icon("fas fa-hospital")),
-    menuItem("Vivienda", tabName = "vivienda_principal", icon = icon("fas fa-city"))
-  )
-)
 
-caja_help<-box(
-  title = NULL,
-  width = 12,
-  #height =15, 
-  sidebarMenu(
-    menuItem("Manual", tabName = "tab_manual", icon = icon("question-circle"))
-  )
-)
 #Texto de input----
 input_numero_documento <- textInput("numero_documento", label = h4("Nit de la empresa"), value = "NIT8600073361", width = NULL, placeholder = NULL)
-#Caja de filtros----
-caja_filtro<-box(
-  title = "Buscar",
-  hr(),
-  width = 12,
-  style="color:#000000",
-  input_numero_documento,
-  # sliderInput("estacionalidad",label = h4("Periodo"), min = 1, max = 12, value =c(1,12)),
-  sliderInput("estacionalidad",label = h4("Periodo"), min = as.Date("2010-01-01"), max = as.Date("2010-12-01"), value =c(as.Date("2010-01-01"),as.Date("2010-12-01")),timeFormat="%b"),
-  actionButton("Run", "", icon=icon("fas fa-search"), class="btn btn-default pull-right")
-)
 
 #Contenido de Help (Manual)
 
@@ -378,22 +345,55 @@ cuerpo_ues <- tabItems(
 )
 #Partes del DashBoard----
 #Cabecera
-header<-dashboardHeader(
-  title = "Ficha de consumo"
-) 
+
+
+header <- dashboardHeaderPlus(
+  title = tagList(img(src = "35pxAmarillo.png"),span(class = "logo-min","Ficha Consumo")),
+  enable_rightsidebar = F
+)
+
+
 #Sidebar
 Sidebar<-dashboardSidebar(
+  hr(),
+  h3("\tBUSCAR"),
+  input_numero_documento,
+  dateRangeInput('dateRange',
+                 label = h4('Periodo'),
+                 start = as.Date("2016/01/01"),
+                 end = as.Date("2020/12/31"),
+                 separator = " A ",
+                 format = "dd/mm/yyyy",
+                 min = as.Date("2016/01/01"),
+                 max = as.Date("2021/01/01")
+  ),
+  actionButton("Run", "", icon=icon("fas fa-search"), class="btn btn-default pull-right"),
   br(),
-  caja_filtro,
   br(),
-  caja_menu,
+  hr(),
+  h3("UES"),
+  sidebarMenu(
+    menuItem("Credito", tabName = "credito_principal",icon = icon("far fa-credit-card")),
+    menuItem("Educacion", tabName = "educacion_principal",icon = icon("far fa-school")),
+    menuItem("Mercadeo", tabName = "mercadeo_principal", icon = icon("fas fa-poll")),
+    menuItem("Recreacion", tabName = "recreacion_principal",icon = icon("fas fa-swimmer")),
+    menuItem("Salud", tabName = "salud_principal", icon = icon("fas fa-hospital")),
+    menuItem("Vivienda", tabName = "vivienda_principal", icon = icon("fas fa-city"))
+  ),
   br(),
-  caja_help
+  h3("MANUAL"),
+  sidebarMenu(
+    menuItem("Manual", tabName = "tab_manual", icon = icon("question-circle"))
+  )
+  #caja_help
 )
 #Cuerpo
 body<- dashboardBody(
-  tags$link(includeCSS(file.path("www", "Estilo.css"))),
   cuerpo_ues
 )
 # Define las partes del DashBoard----
-dashboardPage(skin = "black",header,Sidebar,body)
+dashboardPage(header,Sidebar,body,
+              tags$head(
+                tags$link(rel = "stylesheet", type = "text/css", href = "Estilo.css")
+              )
+              )
