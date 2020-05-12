@@ -1,0 +1,7 @@
+setwd("C:/Users/Juan Camilo Castillo/Desktop/app") 
+
+library(packrat)
+requireNamespace('packrat') 
+
+packrat::restore()
+  

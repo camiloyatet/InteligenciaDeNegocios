@@ -1,0 +1,7 @@
+{
+    "installOptions" : {
+        "installDependencies" : true,
+        "installFromRepository" : true,
+        "libraryPath" : "C:/Users/Juan Camilo Castillo/Documents/R/win-library/3.5"
+    }
+}
