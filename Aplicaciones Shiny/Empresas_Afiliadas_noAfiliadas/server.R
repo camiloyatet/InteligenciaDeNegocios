@@ -6,11 +6,10 @@ shinyServer(function(input, output) {
         #Filtro de empresa
         
         noafiliadas  <-   shiny::reactive({noafiliadas <- no_afiliadas %>% 
-                dplyr::filter(id_empresa==input$razonsocial2|razon_social==input$razonsocial2)})
+                dplyr::filter((id_empresa==input$razonsocial2) | (razon_social==input$razonsocial2))})
         
         afiliadas    <-  shiny::reactive({afiliadas<- emp_afiliadas %>% 
-                dplyr::filter(id_empresa==input$razonsocial|razon_social==input$razonsocial)})
-        
+                dplyr::filter((id_empresa==input$razonsocial)|(razon_social==input$razonsocial))})
         
         # construccion de matriz de distancia -------------------------------------
         

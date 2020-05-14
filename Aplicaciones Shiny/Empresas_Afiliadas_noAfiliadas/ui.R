@@ -4,29 +4,31 @@ sidebar <- dashboardSidebar(width="300px",
                                         shiny::br(),
                                             shiny::br(),
                                         
+                                        menuItem("MANUAL", tabName = "tab_manual", icon = icon("question-circle")),
+                                        
                                         menuItem("EMPRESAS AFILIADAS", tabName = "AFILIADAS", icon = icon("fas fa-building"),
-                                                 menuSubItem("Georreferenciacion",tabName ="total",icon = icon("far fa-map"))
+                                                 menuSubItem("Georreferenciación",tabName ="total",icon = icon("far fa-map"))
                                                  #menuSubItem("Supermercados",tabName ="sup",icon = icon("fas fa-shopping-cart")),
                                                  #menuSubItem("Club",tabName ="clu",icon = icon("fas fa-table-tennis")),
                                                  #menuSubItem("Salud",tabName ="sal",icon =icon("fas fa-user-md")),
                                                  #menuSubItem("Vivienda",tabName ="viv",icon = icon("fas fa-home")),
                                                  #menuSubItem("Drogueria",tabName ="dro" ,icon = icon("fas fa-capsules")),
-                                                 #menuSubItem("Educación",tabName ="edu",icon = icon("fas fa-graduation-cap")),
+                                                 #menuSubItem("EducaciÃ³n",tabName ="edu",icon = icon("fas fa-graduation-cap")),
                                                  #menuSubItem("Centro de servicios",tabName ="csc",icon = icon("fas fa-handshake" )),
-                                                 #menuSubItem("Recreación",tabName ="rec",icon = icon("fas fa-theater-masks"))
+                                                 #menuSubItem("RecreaciÃ³n",tabName ="rec",icon = icon("fas fa-theater-masks"))
                                                  
                                         ),
                                         
                                         menuItem("EMPRESAS NO AFILIADAS", tabName = "NOAFILIADAS", icon = icon("fas fa-industry"),
-                                                 menuSubItem("Georreferenciacion",tabName ="total2",icon = icon("far fa-map"))
+                                                 menuSubItem("Georreferenciación",tabName ="total2",icon = icon("far fa-map"))
                                         #          #menuSubItem("Supermercados",tabName ="sup2" ,icon = icon("fas fa-shopping-cart")),
                                         #          #menuSubItem("Club",tabName ="clu2",icon = icon("fas fa-table-tennis")),
                                         #          #menuSubItem("Salud",tabName ="sal2",icon =icon("fas fa-user-md")),
                                         #          #menuSubItem("Vivienda",tabName ="viv2",icon = icon("fas fa-home")),
                                         #          #menuSubItem("Drogueria",tabName ="dro2",icon = icon("fas fa-capsules")),
-                                        #          #menuSubItem("Educación",tabName ="edu2",icon = icon("fas fa-graduation-cap")),
+                                        #          #menuSubItem("EducaciÃ³n",tabName ="edu2",icon = icon("fas fa-graduation-cap")),
                                         #          #menuSubItem("Centro de servicios",tabName ="csc2",icon = icon("fas fa-handshake")),
-                                        #          #menuSubItem("Recreación",tabName ="rec2",icon = icon("fas fa-theater-masks"))
+                                        #          #menuSubItem("RecreaciÃ³n",tabName ="rec2",icon = icon("fas fa-theater-masks"))
                                         ),
                                         shiny::br(),
                                         
@@ -66,7 +68,27 @@ body <- dashboardBody(
                 #infoBox(
                 #"Orders", uiOutput("orderNum2"), "Subtitle", icon = icon("credit-card")
                 #))
-                
+                tab_manual <- tabItem(
+                        tabName = "tab_manual",
+                        fluidRow(
+                                column(1),
+                                column(10,
+                                       h1("CONSULTA DE INFRAESTRUCTURA Y CONVENIOS TMS POR EMPRESA"),
+                                       br(),
+                                       h3("La presente aplicación permite consultar las empresas afiliadas y no afiliadas a la caja de compensación Colsubsidio frente a su infraestructura y convenios TMS"),
+                                       div(img(src = "gifafiliados_noafiliados.gif", width = 1100)),
+                                       h3("PASOS"),
+                                       br(),
+                                       h3("1. Selecciona la opción a empresa afiliada o no afiliada"),
+                                       h3("2. Selecciona la distancia a la cual quiere evaluar"),
+                                       h3("3. Ingresa en NIT de la empresa"),
+                                       h3("4. Puede evaluar los resultados a través de mapas uno para infraestructura Colsubsidio y uno para Convenios tms"),
+                                       h3("5. Puede evaluar los resultados a través de tablas destinadas a la infraestructura Colsubsidio y los Convenios tms"),
+                                       br()
+                                ),
+                                column(1)
+                        )
+                ),
                 
                 #),
                 tabItem(tabName = "total2",
@@ -85,7 +107,7 @@ body <- dashboardBody(
                                      height="460px",
                                      solidHeader = TRUE,
                                      status = "primary",
-                                     footer = "Infraestructura mas proxima a la empresa",
+                                     footer = "Infraestructura más próxima a la empresa",
                                      leafletOutput("map.no",width = "1000px")),
                                  align = "center"),
                         
@@ -181,7 +203,7 @@ body <- dashboardBody(
                                      height="460px",
                                      solidHeader = TRUE,
                                      status = "primary",
-                                     footer = "Infraestructura mas proxima a la empresa",
+                                     footer = "Infraestructura más próxima a la empresa",
                                      leafletOutput("map",width = "1000px")),
                                  align = "center"),
                         shiny::br(),
@@ -197,7 +219,7 @@ body <- dashboardBody(
                                      height="460px",
                                      solidHeader = TRUE,
                                      status = "danger",
-                                     footer = "Convenios mas proximos a la empresa",
+                                     footer = "Convenios más próximos a la empresa",
                                      leafletOutput("map.convenio.afi",width = "1000px")),
                                  align = "center"
                         ),
