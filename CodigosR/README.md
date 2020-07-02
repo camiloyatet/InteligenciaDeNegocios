@@ -20,6 +20,8 @@ Contiene códigos y funciones de **R** útiles en el trabajo diario.
 
 - [UnirCadenas](https://github.com/DaniloAndress/InteligenciaDeNegocios/blob/master/CodigosR/UnirCadenas.r) Une cadenas de caracteres con la opcion de eliminar del resultado los NAs.
 
+- [ConsultaPostgresql](https://github.com/DaniloAndress/InteligenciaDeNegocios/blob/master/CodigosR/ConsultaPostgresql.R) Permite crear la conexión  a motor de base de datos postgresql. 
+
 
 
 
