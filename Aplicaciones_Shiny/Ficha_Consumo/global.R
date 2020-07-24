@@ -1,0 +1,12 @@
+library(data.table)
+library(tidyverse)
+library(DT)
+library(shinydashboard)
+library(shinyBS)
+library(shinythemes)
+library(shinydashboardPlus)
+library(shinyWidgets)
+
+consumo_empresarial <- readRDS(file = "data/consumo_empresarial.rds")
+consumo_individual<-readRDS(file = "data/consumo_individual.rds")
+informacion_empresa<-readRDS(file = "data/informacion_empresas.rds")
