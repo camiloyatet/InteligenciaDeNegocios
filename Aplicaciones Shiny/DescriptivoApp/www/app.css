@@ -1,0 +1,13 @@
+.skin-blue .main-header .logo {background-color: #232C35;
+}
+
+.skin-blue .main-header .navbar {background-color: #232C35;
+}
+
+.box-header {
+text-align: center;
+}
+
+.shiny-output-error { visibility: hidden; }
+
+.shiny-output-error:before { visibility: hidden; }
